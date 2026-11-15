@@ -4,7 +4,7 @@ Datos turísticos de Andalucía desde las fuentes públicas hasta un modelo anal
 
 **Python · PySpark · Delta Lake · Azure Data Factory · Databricks · Terraform · Power BI**
 
-![Panel real con datos del INE](docs/overview.png)
+![Panel real con datos del INE](docs/overview.jpg)
 
 ## Qué puedes probar en un minuto
 
