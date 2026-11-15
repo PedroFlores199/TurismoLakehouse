@@ -1,0 +1,8 @@
+role 'Málaga'
+	modelPermission: read
+
+	tablePermission dim_province = [province] = "Málaga"
+
+	tablePermission fact_markets_annual = FALSE()
+
+	tablePermission fact_region_monthly = FALSE()

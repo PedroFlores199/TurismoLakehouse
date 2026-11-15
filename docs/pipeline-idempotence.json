@@ -1,0 +1,17 @@
+{
+  "first_run_seconds": 80.685,
+  "repeat_run_seconds": 37.346,
+  "bronze_before": 67908,
+  "bronze_after": 67908,
+  "silver_before": 58788,
+  "silver_after": 58788,
+  "result": "no duplicate input rows",
+  "tables": {
+    "fact_hotel": 480,
+    "fact_markets_annual": 60,
+    "fact_region_monthly": 60,
+    "fact_housing": 104,
+    "dim_province": 8,
+    "dim_date": 4108
+  }
+}

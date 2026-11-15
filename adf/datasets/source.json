@@ -1,0 +1,24 @@
+{
+  "name": "IneSource",
+  "properties": {
+    "type": "RestResource",
+    "parameters": {
+      "table_id": {
+        "type": "String"
+      },
+      "months": {
+        "type": "String"
+      }
+    },
+    "linkedServiceName": {
+      "referenceName": "InePublicApi",
+      "type": "LinkedServiceReference"
+    },
+    "typeProperties": {
+      "relativeUrl": {
+        "type": "Expression",
+        "value": "@concat('DATOS_TABLA/',dataset().table_id,'?nult=',dataset().months)"
+      }
+    }
+  }
+}

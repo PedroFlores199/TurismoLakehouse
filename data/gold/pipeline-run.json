@@ -1,0 +1,22 @@
+{
+  "bronze": 67908,
+  "silver": 58788,
+  "quality": {
+    "checks": 7,
+    "failed": {},
+    "status": "passed"
+  },
+  "tables": {
+    "fact_hotel": 480,
+    "fact_markets_annual": 60,
+    "fact_region_monthly": 60,
+    "fact_housing": 104,
+    "dim_province": 8,
+    "dim_date": 4108
+  },
+  "forecast_rows": 48,
+  "completed_at": "2026-11-15T21:52:22.304871+00:00",
+  "seconds": 37.346,
+  "engine": "Apache Spark 4.0.1 / Delta Lake 4.0.0",
+  "mode": "local"
+}

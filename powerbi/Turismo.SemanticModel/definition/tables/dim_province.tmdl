@@ -1,0 +1,39 @@
+table dim_province
+
+	column code
+		dataType: string
+		summarizeBy: none
+		sourceColumn: code
+
+	column province
+		dataType: string
+		summarizeBy: none
+		sourceColumn: province
+		isKey
+
+	column region
+		dataType: string
+		summarizeBy: none
+		sourceColumn: region
+
+	column latitude
+		dataType: double
+		summarizeBy: none
+		sourceColumn: latitude
+		dataCategory: Latitude
+
+	column longitude
+		dataType: double
+		summarizeBy: none
+		sourceColumn: longitude
+		dataCategory: Longitude
+
+	partition dim_province = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/PedroFlores199/TurismoLakehouse/main/data/gold/dim_province.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+			    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    Typed = Table.TransformColumnTypes(Headers, {{"code", type text}, {"province", type text}, {"region", type text}, {"latitude", type number}, {"longitude", type number}}, "en-US")
+			in
+			    Typed

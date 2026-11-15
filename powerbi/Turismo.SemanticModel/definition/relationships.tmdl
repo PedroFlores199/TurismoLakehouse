@@ -1,0 +1,44 @@
+relationship 410f1d23-3555-562a-b983-0b244eda7cd6
+	fromColumn: fact_hotel.province
+	toColumn: dim_province.province
+	crossFilteringBehavior: oneDirection
+
+relationship 88ec5f0f-3b63-5288-a8d0-dca7732d8680
+	fromColumn: fact_housing.province
+	toColumn: dim_province.province
+	crossFilteringBehavior: oneDirection
+
+relationship 554e07ee-c492-5253-b333-fb1bc3d7471d
+	fromColumn: fact_forecast.province
+	toColumn: dim_province.province
+	crossFilteringBehavior: oneDirection
+
+relationship 0b9b0dcb-af49-5753-b87a-53631c0b2d82
+	fromColumn: fact_hotel.period_start
+	toColumn: dim_date.date
+	crossFilteringBehavior: oneDirection
+
+relationship 57c8fd13-13ef-5a2e-b5fe-807fc8952280
+	fromColumn: fact_housing.period_start
+	toColumn: dim_date.date
+	crossFilteringBehavior: oneDirection
+
+relationship ef0f82c3-891c-5fbf-9b74-cfa10b109cba
+	fromColumn: fact_forecast.period_start
+	toColumn: dim_date.date
+	crossFilteringBehavior: oneDirection
+
+relationship 17f74d1c-71a7-5472-8e20-850c3e60fd66
+	fromColumn: fact_region_monthly.period_start
+	toColumn: dim_date.date
+	crossFilteringBehavior: oneDirection
+
+relationship 1acd8647-7ca5-538b-bc03-594449c21909
+	fromColumn: fact_markets_annual.year
+	toColumn: dim_year.year
+	crossFilteringBehavior: oneDirection
+
+relationship cf3c8bfb-e794-52fc-aee2-1c19eed4247b
+	fromColumn: dim_date.year
+	toColumn: dim_year.year
+	crossFilteringBehavior: oneDirection

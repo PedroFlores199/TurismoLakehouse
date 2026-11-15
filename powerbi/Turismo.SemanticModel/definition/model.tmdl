@@ -1,0 +1,25 @@
+model Model
+	culture: es-ES
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	discourageImplicitMeasures
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+ref table dim_province
+ref table dim_date
+ref table dim_year
+ref table fact_hotel
+ref table fact_markets_annual
+ref table fact_region_monthly
+ref table fact_housing
+ref table fact_forecast
+
+ref role 'Almería'
+ref role 'Cádiz'
+ref role 'Córdoba'
+ref role 'Granada'
+ref role 'Huelva'
+ref role 'Jaén'
+ref role 'Málaga'
+ref role 'Sevilla'

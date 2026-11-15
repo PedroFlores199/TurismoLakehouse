@@ -1,0 +1,21 @@
+services:
+  web:
+    build:
+      context: .
+      target: web
+    ports: ["127.0.0.1:5102:8000"]
+    restart: unless-stopped
+    read_only: true
+    tmpfs: ["/tmp"]
+    security_opt: ["no-new-privileges:true"]
+  pipeline:
+    build:
+      context: .
+      target: etl
+    profiles: ["etl"]
+    volumes: ["lake:/lake"]
+    environment:
+      SPARK_LOCAL_IP: 127.0.0.1
+    mem_limit: 4g
+volumes:
+  lake:

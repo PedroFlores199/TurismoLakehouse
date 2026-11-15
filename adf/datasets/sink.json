@@ -1,0 +1,29 @@
+{
+  "name": "LandingJson",
+  "properties": {
+    "type": "Json",
+    "parameters": {
+      "table_id": {
+        "type": "String"
+      },
+      "months": {
+        "type": "String"
+      }
+    },
+    "linkedServiceName": {
+      "referenceName": "LakeManagedIdentity",
+      "type": "LinkedServiceReference"
+    },
+    "typeProperties": {
+      "location": {
+        "type": "AzureBlobFSLocation",
+        "fileSystem": "lake",
+        "folderPath": "landing/raw",
+        "fileName": {
+          "type": "Expression",
+          "value": "@concat(dataset().table_id,'.json')"
+        }
+      }
+    }
+  }
+}

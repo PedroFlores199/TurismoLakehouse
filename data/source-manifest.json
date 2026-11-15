@@ -1,0 +1,68 @@
+[
+  {
+    "id": 2074,
+    "name": "Viajeros y pernoctaciones",
+    "frequency": "monthly",
+    "months": 60,
+    "grain": "province / residence group / month",
+    "url": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/2074?nult=60",
+    "sha256": "d6eb3e1e19c0667571e7da4f1a955fd66bb6b0a5d312308ce9dda51f1e5d6c54",
+    "retrieved": "2026-11-15T21:38:01.437140+00:00",
+    "series": 420
+  },
+  {
+    "id": 2066,
+    "name": "Ocupación y oferta hotelera",
+    "frequency": "monthly",
+    "months": 60,
+    "grain": "province / month",
+    "url": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/2066?nult=60",
+    "sha256": "4d146a6ad5124bb75f5183c095840f221abf4e27b885473c49e9e83501c4ec32",
+    "retrieved": "2026-11-15T21:38:01.460048+00:00",
+    "series": 441
+  },
+  {
+    "id": 10823,
+    "name": "Turistas internacionales FRONTUR",
+    "frequency": "monthly",
+    "months": 60,
+    "grain": "autonomous community / month",
+    "url": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/10823?nult=60",
+    "sha256": "ebcf9781f518559f36db0c6bc7482d060456cb59b15fabcda70138506b43c17a",
+    "retrieved": "2026-11-15T21:38:01.466733+00:00",
+    "series": 32
+  },
+  {
+    "id": 10839,
+    "name": "Gasto turístico EGATUR",
+    "frequency": "monthly",
+    "months": 60,
+    "grain": "autonomous community / month",
+    "url": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/10839?nult=60",
+    "sha256": "f8fdf2cf4c876e64187c4d1cc668ff0313d870c2f7dd7ad1ce80e828bcd62dee",
+    "retrieved": "2026-11-15T21:38:01.477121+00:00",
+    "series": 128
+  },
+  {
+    "id": 24746,
+    "name": "Gasto por mercado de origen",
+    "frequency": "annual",
+    "months": 60,
+    "grain": "autonomous community / country / year",
+    "url": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/24746?nult=60",
+    "sha256": "2e8091c295d517b6607e4c1391824aa5c0c828b063ddad1997b608237f9014be",
+    "retrieved": "2026-11-15T21:38:01.481119+00:00",
+    "series": 384
+  },
+  {
+    "id": 39364,
+    "name": "Viviendas turísticas",
+    "frequency": "semiannual",
+    "months": 60,
+    "grain": "province / published snapshot",
+    "url": "https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/39364?nult=60",
+    "sha256": "3582bf13f1a984c2b08ca0aac48561e5f47c6ce4a47780d1cfa24436673019f6",
+    "retrieved": "2026-11-15T21:38:01.487884+00:00",
+    "series": 216
+  }
+]

@@ -1,0 +1,50 @@
+table fact_markets_annual
+
+	measure 'Gasto regional por país' = SUM(fact_markets_annual[spend_eur])
+		formatString: #,0 €
+		displayFolder: Indicadores
+
+	column region
+		dataType: string
+		summarizeBy: none
+		sourceColumn: region
+
+	column country
+		dataType: string
+		summarizeBy: none
+		sourceColumn: country
+
+	column year
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: year
+
+	column spend_eur
+		dataType: double
+		summarizeBy: none
+		sourceColumn: spend_eur
+
+	column spend_per_person_eur
+		dataType: double
+		summarizeBy: none
+		sourceColumn: spend_per_person_eur
+
+	column daily_spend_eur
+		dataType: double
+		summarizeBy: none
+		sourceColumn: daily_spend_eur
+
+	column mean_trip_days
+		dataType: double
+		summarizeBy: none
+		sourceColumn: mean_trip_days
+
+	partition fact_markets_annual = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/PedroFlores199/TurismoLakehouse/main/data/gold/fact_markets_annual.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+			    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    Typed = Table.TransformColumnTypes(Headers, {{"region", type text}, {"country", type text}, {"year", Int64.Type}, {"spend_eur", type number}, {"spend_per_person_eur", type number}, {"daily_spend_eur", type number}, {"mean_trip_days", type number}}, "en-US")
+			in
+			    Typed

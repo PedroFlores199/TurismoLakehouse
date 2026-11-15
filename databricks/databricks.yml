@@ -1,0 +1,21 @@
+bundle:
+  name: TurismoLakehouse
+include: [resources/*.yml]
+workspace:
+  root_path: /Shared/.bundle/${bundle.name}/${bundle.target}
+artifacts:
+  default:
+    type: whl
+    path: ..
+    build: python -m build --wheel
+variables:
+  catalog:
+    default: turismo
+  landing_root:
+    default: /Volumes/turismo/bronze/landing
+targets:
+  dev:
+    default: true
+    mode: development
+  prod:
+    mode: production

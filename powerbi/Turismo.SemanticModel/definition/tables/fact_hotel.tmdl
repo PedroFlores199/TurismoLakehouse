@@ -1,0 +1,110 @@
+table fact_hotel
+
+	measure 'Viajeros' = SUM(fact_hotel[travelers_total])
+		formatString: #,0
+		displayFolder: Indicadores
+
+	measure 'Pernoctaciones' = SUM(fact_hotel[nights_total])
+		formatString: #,0
+		displayFolder: Indicadores
+
+	measure 'Estancia media' = DIVIDE([Pernoctaciones], [Viajeros])
+		formatString: 0.00
+		displayFolder: Indicadores
+
+	measure 'Cuota extranjera' = IF(COUNTROWS(FILTER(fact_hotel, ISBLANK(fact_hotel[travelers_foreign]))) > 0, BLANK(), DIVIDE(SUM(fact_hotel[travelers_foreign]), [Viajeros]))
+		formatString: 0.0%
+		displayFolder: Indicadores
+
+	measure 'Ocupación por plazas' = VAR ValidRows = FILTER(fact_hotel, NOT ISBLANK(fact_hotel[occupancy_pct]) && fact_hotel[hotel_beds] > 0) RETURN DIVIDE(SUMX(ValidRows, fact_hotel[occupancy_pct] * fact_hotel[hotel_beds] * DAY(EOMONTH(fact_hotel[period_start], 0))), SUMX(ValidRows, fact_hotel[hotel_beds] * DAY(EOMONTH(fact_hotel[period_start], 0)))) / 100
+		formatString: 0.0%
+		displayFolder: Indicadores
+
+	measure 'Pernoctaciones año anterior' = VAR Months = VALUES(fact_hotel[period_start]) VAR PriorMonths = SELECTCOLUMNS(Months, "Date", EDATE(fact_hotel[period_start], -12)) RETURN CALCULATE([Pernoctaciones], REMOVEFILTERS(dim_year), REMOVEFILTERS(dim_date), TREATAS(PriorMonths, fact_hotel[period_start]))
+		formatString: #,0
+		displayFolder: Indicadores
+
+	measure 'Variación interanual' = DIVIDE([Pernoctaciones] - [Pernoctaciones año anterior], [Pernoctaciones año anterior])
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: Indicadores
+
+	measure 'Observaciones sin viajeros extranjeros' = COUNTROWS(FILTER(fact_hotel, ISBLANK(fact_hotel[travelers_foreign])))
+		formatString: 0
+		displayFolder: Indicadores
+
+	column province
+		dataType: string
+		summarizeBy: none
+		sourceColumn: province
+
+	column period_start
+		dataType: dateTime
+		summarizeBy: none
+		sourceColumn: period_start
+		formatString: yyyy-MM-dd
+		annotation UnderlyingDateTimeDataType = Date
+
+	column year
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: year
+
+	column travelers_total
+		dataType: double
+		summarizeBy: none
+		sourceColumn: travelers_total
+
+	column travelers_domestic
+		dataType: double
+		summarizeBy: none
+		sourceColumn: travelers_domestic
+
+	column travelers_foreign
+		dataType: double
+		summarizeBy: none
+		sourceColumn: travelers_foreign
+
+	column nights_total
+		dataType: double
+		summarizeBy: none
+		sourceColumn: nights_total
+
+	column nights_domestic
+		dataType: double
+		summarizeBy: none
+		sourceColumn: nights_domestic
+
+	column nights_foreign
+		dataType: double
+		summarizeBy: none
+		sourceColumn: nights_foreign
+
+	column occupancy_pct
+		dataType: double
+		summarizeBy: none
+		sourceColumn: occupancy_pct
+
+	column hotel_beds
+		dataType: double
+		summarizeBy: none
+		sourceColumn: hotel_beds
+
+	column hotels
+		dataType: double
+		summarizeBy: none
+		sourceColumn: hotels
+
+	column mean_stay
+		dataType: double
+		summarizeBy: none
+		sourceColumn: mean_stay
+
+	partition fact_hotel = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/PedroFlores199/TurismoLakehouse/main/data/gold/fact_hotel.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+			    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    Typed = Table.TransformColumnTypes(Headers, {{"province", type text}, {"period_start", type date}, {"year", Int64.Type}, {"travelers_total", type number}, {"travelers_domestic", type number}, {"travelers_foreign", type number}, {"nights_total", type number}, {"nights_domestic", type number}, {"nights_foreign", type number}, {"occupancy_pct", type number}, {"hotel_beds", type number}, {"hotels", type number}, {"mean_stay", type number}}, "en-US")
+			in
+			    Typed

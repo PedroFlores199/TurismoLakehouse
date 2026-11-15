@@ -1,0 +1,38 @@
+[
+  {
+    "table_id": "2074",
+    "months": "60",
+    "frequency": "monthly",
+    "name": "Viajeros y pernoctaciones"
+  },
+  {
+    "table_id": "2066",
+    "months": "60",
+    "frequency": "monthly",
+    "name": "Ocupación y oferta hotelera"
+  },
+  {
+    "table_id": "10823",
+    "months": "60",
+    "frequency": "monthly",
+    "name": "Turistas internacionales FRONTUR"
+  },
+  {
+    "table_id": "10839",
+    "months": "60",
+    "frequency": "monthly",
+    "name": "Gasto turístico EGATUR"
+  },
+  {
+    "table_id": "24746",
+    "months": "60",
+    "frequency": "annual",
+    "name": "Gasto por mercado de origen"
+  },
+  {
+    "table_id": "39364",
+    "months": "60",
+    "frequency": "semiannual",
+    "name": "Viviendas turísticas"
+  }
+]

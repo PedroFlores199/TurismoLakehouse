@@ -1,0 +1,62 @@
+table fact_forecast
+
+	measure 'Pernoctaciones previstas' = SUM(fact_forecast[predicted_nights])
+		formatString: #,0
+		displayFolder: Indicadores
+
+	measure 'Límite inferior orientativo' = SUM(fact_forecast[lower])
+		formatString: #,0
+		displayFolder: Indicadores
+
+	measure 'Límite superior orientativo' = SUM(fact_forecast[upper])
+		formatString: #,0
+		displayFolder: Indicadores
+
+	column province
+		dataType: string
+		summarizeBy: none
+		sourceColumn: province
+
+	column period_start
+		dataType: dateTime
+		summarizeBy: none
+		sourceColumn: period_start
+		formatString: yyyy-MM-dd
+		annotation UnderlyingDateTimeDataType = Date
+
+	column predicted_nights
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: predicted_nights
+
+	column lower
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: lower
+
+	column upper
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: upper
+
+	column model
+		dataType: string
+		summarizeBy: none
+		sourceColumn: model
+
+	column input_last_month
+		dataType: dateTime
+		summarizeBy: none
+		sourceColumn: input_last_month
+		formatString: yyyy-MM-dd
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition fact_forecast = m
+		mode: import
+		source =
+			let
+			    Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/PedroFlores199/TurismoLakehouse/main/data/gold/fact_forecast.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+			    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+			    Typed = Table.TransformColumnTypes(Headers, {{"province", type text}, {"period_start", type date}, {"predicted_nights", Int64.Type}, {"lower", Int64.Type}, {"upper", Int64.Type}, {"model", type text}, {"input_last_month", type date}}, "en-US")
+			in
+			    Typed

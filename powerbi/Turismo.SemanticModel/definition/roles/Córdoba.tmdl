@@ -1,0 +1,8 @@
+role 'Córdoba'
+	modelPermission: read
+
+	tablePermission dim_province = [province] = "Córdoba"
+
+	tablePermission fact_markets_annual = FALSE()
+
+	tablePermission fact_region_monthly = FALSE()

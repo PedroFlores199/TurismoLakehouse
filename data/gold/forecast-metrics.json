@@ -1,0 +1,130 @@
+[
+  {
+    "province": "Almer\u00eda",
+    "status": "trained",
+    "model": "seasonal_naive",
+    "train_months": 36,
+    "calibration_months": 12,
+    "test_months": 12,
+    "validation_mae": {
+      "seasonal_naive": 22766.083333333332,
+      "exponential_smoothing": 41087.057763357436
+    },
+    "test_mae": 27720.25,
+    "test_interval_coverage": 0.75,
+    "interval_nominal": 0.9,
+    "last_observed": "2026-09-01"
+  },
+  {
+    "province": "C\u00e1diz",
+    "status": "trained",
+    "model": "exponential_smoothing",
+    "train_months": 36,
+    "calibration_months": 12,
+    "test_months": 12,
+    "validation_mae": {
+      "seasonal_naive": 36941.666666666664,
+      "exponential_smoothing": 31446.206478047883
+    },
+    "test_mae": 24697.89388165687,
+    "test_interval_coverage": 0.9166666666666666,
+    "interval_nominal": 0.9,
+    "last_observed": "2026-09-01"
+  },
+  {
+    "province": "C\u00f3rdoba",
+    "status": "trained",
+    "model": "exponential_smoothing",
+    "train_months": 36,
+    "calibration_months": 12,
+    "test_months": 12,
+    "validation_mae": {
+      "seasonal_naive": 7047.666666666667,
+      "exponential_smoothing": 6909.711049707708
+    },
+    "test_mae": 8164.1786682955935,
+    "test_interval_coverage": 0.6666666666666666,
+    "interval_nominal": 0.9,
+    "last_observed": "2026-09-01"
+  },
+  {
+    "province": "Granada",
+    "status": "trained",
+    "model": "seasonal_naive",
+    "train_months": 36,
+    "calibration_months": 12,
+    "test_months": 12,
+    "validation_mae": {
+      "seasonal_naive": 19436.333333333332,
+      "exponential_smoothing": 20184.43912094361
+    },
+    "test_mae": 20509.166666666668,
+    "test_interval_coverage": 0.9166666666666666,
+    "interval_nominal": 0.9,
+    "last_observed": "2026-09-01"
+  },
+  {
+    "province": "Huelva",
+    "status": "trained",
+    "model": "exponential_smoothing",
+    "train_months": 36,
+    "calibration_months": 12,
+    "test_months": 12,
+    "validation_mae": {
+      "seasonal_naive": 18289.583333333332,
+      "exponential_smoothing": 15072.199662535924
+    },
+    "test_mae": 30386.56080851852,
+    "test_interval_coverage": 0.5833333333333334,
+    "interval_nominal": 0.9,
+    "last_observed": "2026-09-01"
+  },
+  {
+    "province": "Ja\u00e9n",
+    "status": "trained",
+    "model": "exponential_smoothing",
+    "train_months": 36,
+    "calibration_months": 12,
+    "test_months": 12,
+    "validation_mae": {
+      "seasonal_naive": 5505.0,
+      "exponential_smoothing": 4982.108104927293
+    },
+    "test_mae": 4384.398708042131,
+    "test_interval_coverage": 0.9166666666666666,
+    "interval_nominal": 0.9,
+    "last_observed": "2026-09-01"
+  },
+  {
+    "province": "M\u00e1laga",
+    "status": "trained",
+    "model": "exponential_smoothing",
+    "train_months": 36,
+    "calibration_months": 12,
+    "test_months": 12,
+    "validation_mae": {
+      "seasonal_naive": 65896.25,
+      "exponential_smoothing": 44254.66577501041
+    },
+    "test_mae": 39338.88424798166,
+    "test_interval_coverage": 0.9166666666666666,
+    "interval_nominal": 0.9,
+    "last_observed": "2026-09-01"
+  },
+  {
+    "province": "Sevilla",
+    "status": "trained",
+    "model": "exponential_smoothing",
+    "train_months": 36,
+    "calibration_months": 12,
+    "test_months": 12,
+    "validation_mae": {
+      "seasonal_naive": 27665.583333333332,
+      "exponential_smoothing": 24133.121832506353
+    },
+    "test_mae": 24150.26490849188,
+    "test_interval_coverage": 0.8333333333333334,
+    "interval_nominal": 0.9,
+    "last_observed": "2026-09-01"
+  }
+]
